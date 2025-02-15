@@ -7,6 +7,7 @@ from flask_login import LoginManager, UserMixin, login_user, login_required, log
 app = Flask(__name__)
 app.secret_key = os.environ.get("KEY")
 
+
 login_manager = LoginManager()
 login_manager.init_app(app)
 
@@ -81,7 +82,8 @@ class User(UserMixin):
 def load_user(user_id):
     return User(user_id)
 
-@app.route('/login', methods=['GET', 'POST'])
+@app.route('/', methods=['GET', 'POST'])
+# @app.route('/')
 def login():
     if request.method == 'POST':
         username = request.form['username']
@@ -112,7 +114,7 @@ def logout():
     logout_user()
     return redirect(url_for('login'))
 
-@app.route('/')
+@app.route('/login', methods=['GET'])
 @login_required
 def index():
     return render_template('index.html', tasks=storage(current_user.id).get_list())
