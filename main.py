@@ -50,18 +50,25 @@ class storage():
         return []
     
     def save_user(self, password):
-        config.read('./data/users.ini')
-        if not config.has_section('users'):
+        if os.path.exists('./data/users.ini'):
+            config.read('./data/users.ini')
+            if not config.has_section('users'):
+                config.add_section('users')
+            config.set('users', self.id, password)
+            with open('./data/users.ini', 'w') as file:
+                config.write(file)
+        else:
             config.add_section('users')
-        config.set('users', self.id, password)
-        with open('./data/users.ini', 'w') as file:
-            config.write(file)
+            config.set('users', self.id, password)
+            with open('./data/users.ini', 'w') as file:
+                config.write(file)
     
     def check_user(self, password):
-        config.read('./data/users.ini')
-        if config.has_section('users'):
-            if self.id in config['users'] and config['users'][self.id] == password:
-                return True
+        if os.path.exists('./data/users.ini'):
+            config.read('./data/users.ini')
+            if config.has_section('users'):
+                if self.id in config['users'] and config['users'][self.id] == password:
+                    return True
         return False
 
 # storage('admin').add_to_list(['Task 1', 'Task 2', 'Task 3'])
