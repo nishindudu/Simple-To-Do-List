@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="script.js"></script>
+</head>
+<body>
+    <div class="header">
+        <h1 id="pg_title">To-Do List</h1>
+        <a href="{{ url_for('logout') }}">Logout</a>
+    </div>
+    <ul>
+        {% for task in tasks %}
+            <li>{{task}}</li>
+        {% endfor %}
+    </ul>
+    <form method="POST" action="{{ url_for('add_task') }}" class="login-form">
+        <label for="task">Task:</label>
+        <input type="text" id="task" name="task" required><br>
+        <button type="submit">Add Task</button>
+    </form>
+</body>
+</html>
