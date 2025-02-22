@@ -23,9 +23,9 @@
     <a href="{{ url_for('login') }}" id="log_form_end">Login</a>
 
     {% if success %}
-        <script>{{ alert("Registered successfully"); }}</script>
+        <script>alert("Registered successfully");</script>
     {% elif success is not none %}
-        <script>{{ alert("Registration failed"); }}</script>
+        <script>alert("Registration failed");</script>
     {% endif %}
 </body>
 </html>
