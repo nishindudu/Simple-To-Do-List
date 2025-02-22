@@ -8,9 +8,11 @@ from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
 
 app = Flask(__name__)
-app.secret_key = os.environ.get("KEY")
+# app.secret_key = os.environ.get("KEY")
+app.secret_key = "meowwww"
 
-uri = os.environ.get("MONGO")
+# uri = os.environ.get("MONGO")
+uri = "mongodb+srv://nishindudu:Yf4itcsbbkJTjqTX@cluster0.2j1wp.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 
 client = MongoClient(uri, server_api=ServerApi('1'))
 

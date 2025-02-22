@@ -96,6 +96,11 @@ button{
     position: absolute !important;
 }
 
+.task-form button {
+    width: 25%;
+    height: 18%;
+}
+
 #log_form_end {
     display: flex;
     justify-content: center;
@@ -119,6 +124,16 @@ button{
     position: fixed;
     min-width: 110px;
 }
+.left-pane::before{
+    content: " ";
+    position: absolute;
+    top: -14vh;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--secondary-color);
+    z-index: -1;
+}
 
 .main-content {
     margin-left: 10%;
@@ -128,7 +143,7 @@ button{
     display: flex;
     flex-direction: column;
     align-items: left;
-    height: 40vh;
+    height: 100vh;
     font-family: 'Roboto', sans-serif;
     margin-bottom: -5%;
     /* position: fixed; */
