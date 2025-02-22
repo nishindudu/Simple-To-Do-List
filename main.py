@@ -172,8 +172,10 @@ def create_user():
         user = db(username)
         try:
             user.save_user(password)
+            return render_template('register.html', success=True)
         except Exception as e:
             print(e)
+            return render_template('register.html', success=False)
     return render_template('register.html')
 
 @app.route('/logout')
