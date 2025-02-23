@@ -24,7 +24,7 @@
 
     {% if success %}
         <script>alert("Registered successfully");</script>
-    {% elif success is not none %}
+    {% elif success is false %}
         <script>alert("Registration failed");</script>
     {% endif %}
 </body>

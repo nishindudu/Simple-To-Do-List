@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To-Do List</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-    <script src="script.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </head>
 <body>
     <div class="header">
@@ -13,7 +13,7 @@
         <a href="{{ url_for('logout') }}">Logout</a>
     </div>
     <div class="left-pane">
-        <h2>Welcome, {{ session.name }}</h2>
+        <h2>Welcome, {{ user }}</h2>
     </div>
     <div class="main-content">
         <ul id="task-list">

@@ -9,8 +9,10 @@ from pymongo.server_api import ServerApi
 
 app = Flask(__name__)
 app.secret_key = os.environ.get("KEY")
+app.secret_key = "meowww"
 
-uri = os.environ.get("MONGO")
+# uri = os.environ.get("MONGO")
+uri = "mongodb+srv://nishindudu:Yf4itcsbbkJTjqTX@cluster0.2j1wp.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 
 client = MongoClient(uri, server_api=ServerApi('1'))
 
@@ -187,7 +189,7 @@ def logout():
 @app.route('/login', methods=['GET'])
 @login_required
 def index():
-    return render_template('index.html', tasks=db(current_user.id).get_list())
+    return render_template('index.html', tasks=db(current_user.id).get_list(), user=current_user.id)
 
 @app.route('/add_item', methods=['POST'])
 @login_required
